@@ -1,0 +1,32 @@
+{
+  "name": "ScrumPoker",
+  "version": "1.0.0",
+  "description": "ScrumPoker node js app using Socket.IO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shann1990/ScrumPoker.git"
+  },
+  "keywords": [
+    "scrum",
+    "agile",
+    "poker",
+    "node",
+    "socket"
+  ],
+  "author": "ShannMarsland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shann1990/ScrumPoker/issues"
+  },
+  "homepage": "https://github.com/shann1990/ScrumPoker",
+  "dependencies": {
+    "express": "^4.12.3",
+    "mocha": "^2.2.4",
+    "mongoose": "^4.0.1",
+    "socket.io": "^1.3.5"
+  }
+}

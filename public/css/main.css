@@ -1,0 +1,47 @@
+body{
+	background:#997A5C;
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.woodBG{
+	background:url(../img/wood.jpg);
+	border-radius:3px;
+	padding:10px;
+	color:#fff;
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.card{
+	background:url(../img/paper.jpg);
+	border-radius:0px 0px 3px 3px;
+	margin:10px;
+	margin-top:0px;
+	color:#1A1A1A;
+	font-size: 90px;
+	text-align: center;
+}
+
+.playerRow{
+	min-height: 200px;	
+}
+
+.barChart{
+	background:#1A1A1A;	
+	border:2px solid #000;
+	height: 50px;
+	width: 100%;
+}
+
+.barChartCol{
+	padding:20px;
+	padding-left: 0px;
+	border-left: 3px solid #fff;
+}
+
+.titleText{
+	font-size: 70px;
+	font-style:italic;
+	text-align: center;
+}

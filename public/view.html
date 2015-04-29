@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Socket IO Tutorial</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/socket.io.js"></script>
+	<script>
+		var dashboard = io('localhost:3000/dashboard',{forceNew : true});	
+		var userArray = [];
+
+
+		dashboard.on('user-count',function(count){
+			console.log(count);
+			$('#currentUsers').text(count);
+		});
+
+		dashboard.on('users',function(users){
+			
+			for (var key in users) {
+			  if (users.hasOwnProperty(key)) {
+			  	userArray.push(users[key])
+			  }
+			}
+			for(var i = 1;i < userArray.length;i++){
+				$('#player' + i ).text(userArray[i]);
+			}
+		});
+
+		$(document).ready(function(){
+			$('#currentUsers').text(0);
+			
+		})
+		
+	</script>
+</head>
+<body>	Current Users = <span id="currentUsers"></span>
+<div class="container titleText">Scrum Poker</div>
+
+<div class="container">
+	<div class="row playerRow">
+		<div class="col-sm-3">
+			<div class="woodBG" id="player1">Empty</div>
+			<div class="card">7</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="woodBG" id="player2">Empty</div>
+			<div class="card">7</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="woodBG" id="player3">Empty</div>
+			<div class="card">7</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="woodBG" id="player4">Empty</div>
+			<div class="card">7</div>
+		</div>
+	</div>
+
+	<div class="row playerRow">
+		<div class="col-sm-3">
+			<div class="woodBG" id="player5">Empty</div>
+			<div class="card">7</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="woodBG" id="player6">Empty</div>
+			<div class="card">7</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="woodBG" id="player7">Empty</div>
+			<div class="card">7</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="woodBG" id="player8">Empty</div>
+			<div class="card">7</div>
+		</div>
+	</div>
+	<div class="row playerRow">
+		<div class="col-sm-12 barChartCol">
+			<div class="barChart">2</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

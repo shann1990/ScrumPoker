@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Socket IO Tutorial</title>
+	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/socket.io.js"></script>
+	<script>
+	var socket;
+		$(document).ready(function(){
+			$('#uxEnterRoom').click(function(){
+				socket = io('localhost:3000/poker',{forceNew : true});	
+				socket.emit('user-data',{name: $('#uxName').val()})
+			});	
+
+			$('#uxLeaveRoom').click(function(){
+				socket.disconnect();
+			});
+		});
+	</script>
+</head>
+<body>	
+<div class="container titleText">Scrum Poker</div>
+<div class="container">
+	<div class="row playerRow">
+		<div class="col-sm-12">
+			Name: <input type="text" name="uxName" id="uxName">
+			<input type="button" value="Enter" class="button" id="uxEnterRoom">
+			<input type="button" value="Leave" class="button" id="uxLeaveRoom">
+		</div>		
+	</div>
+</div>
+</body>
+</html>

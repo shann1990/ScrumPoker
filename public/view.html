@@ -9,30 +9,36 @@
 	<script src="js/socket.io.js"></script>
 	<script>
 		var dashboard = io('localhost:3000/dashboard',{forceNew : true});	
+		
 		var userArray = [];
 
-
 		dashboard.on('user-count',function(count){
-			console.log(count);
 			$('#currentUsers').text(count);
 		});
 
 		dashboard.on('users',function(users){
-			
-			for (var key in users) {
-			  if (users.hasOwnProperty(key)) {
-			  	userArray.push(users[key])
-			  }
+			for(var key in users){
+				$('#'+key).text(users[key].name);				
 			}
-			for(var i = 1;i < userArray.length;i++){
-				$('#player' + i ).text(userArray[i]);
-			}
+			CheckSeats();
 		});
 
 		$(document).ready(function(){
-			$('#currentUsers').text(0);
-			
+			$('#currentUsers').text(0);	
+			CheckSeats();
 		})
+
+		function CheckSeats(){
+			$.each($('.woodBG'),function(){
+				if($(this).text() ==""){
+					$(this).slideUp();
+					$(this).next().slideUp();
+				}
+				else{
+					$(this).slideDown();
+				}
+			})
+		}
 		
 	</script>
 </head>
@@ -42,38 +48,38 @@
 <div class="container">
 	<div class="row playerRow">
 		<div class="col-sm-3">
-			<div class="woodBG" id="player1">Empty</div>
+			<div class="woodBG" id="player1"></div>
 			<div class="card">7</div>
 		</div>
 		<div class="col-sm-3">
-			<div class="woodBG" id="player2">Empty</div>
+			<div class="woodBG" id="player2"></div>
 			<div class="card">7</div>
 		</div>
 		<div class="col-sm-3">
-			<div class="woodBG" id="player3">Empty</div>
+			<div class="woodBG" id="player3"></div>
 			<div class="card">7</div>
 		</div>
 		<div class="col-sm-3">
-			<div class="woodBG" id="player4">Empty</div>
+			<div class="woodBG" id="player4"></div>
 			<div class="card">7</div>
 		</div>
 	</div>
 
 	<div class="row playerRow">
 		<div class="col-sm-3">
-			<div class="woodBG" id="player5">Empty</div>
+			<div class="woodBG" id="player5"></div>
 			<div class="card">7</div>
 		</div>
 		<div class="col-sm-3">
-			<div class="woodBG" id="player6">Empty</div>
+			<div class="woodBG" id="player6"></div>
 			<div class="card">7</div>
 		</div>
 		<div class="col-sm-3">
-			<div class="woodBG" id="player7">Empty</div>
+			<div class="woodBG" id="player7"></div>
 			<div class="card">7</div>
 		</div>
 		<div class="col-sm-3">
-			<div class="woodBG" id="player8">Empty</div>
+			<div class="woodBG" id="player8"></div>
 			<div class="card">7</div>
 		</div>
 	</div>

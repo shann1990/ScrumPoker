@@ -23,6 +23,31 @@ body{
 	text-align: center;
 }
 
+.selection-card{
+	background:url(../img/paper.jpg);
+	border-radius:0px 0px 3px 3px;
+	margin:5px;
+	margin-top:0px;
+	color:#1A1A1A;
+	font-size: 90px;
+	text-align: center;
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+	margin:15px;
+	opacity:0.6;
+}
+
+
+
+.selection-card.selected, .selection-card:hover{	
+	-webkit-box-shadow: 0px 0px 29px 2px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 30px 2px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 30px 2px rgba(0,0,0,0.75);
+	opacity:1;
+	cursor: pointer;
+}
+
 .playerRow{
 	min-height: 200px;	
 }
@@ -44,4 +69,31 @@ body{
 	font-size: 70px;
 	font-style:italic;
 	text-align: center;
+}
+
+.join-holder{
+	text-align:center;
+	font-size: 16px;
+}
+
+.join-holder input[type=text]{
+	border-radius:5px;
+	padding:10px;
+	border:2px solid #331A00;
+}
+
+.join-holder input[type=button], .submit-button{
+	border-radius:5px;
+	padding:10px;
+	background:#331A00;
+	color:#fff;
+	border:0px;
+}
+
+.join-holder input[type=button]:disabled, .submit-button:disabled{
+	background:#705F4D;
+}
+
+.submit-button{
+	width:100%;
 }

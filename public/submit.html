@@ -3,33 +3,107 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Socket IO Tutorial</title>
-	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="js/jquery.js"></script>
 	<script src="js/socket.io.js"></script>
 	<script>
-	var socket;
+		var socket;
+		var selectedCard;
+
 		$(document).ready(function(){
 			$('#uxEnterRoom').click(function(){
 				socket = io('localhost:3000/poker',{forceNew : true});	
-				socket.emit('user-data',{name: $('#uxName').val()})
+				socket.emit('user-data',{name: $('#uxName').val()});
+				$('#uxEnterRoom').attr('disabled','disabled');
+				$('#uxLeaveRoom').removeAttr('disabled');
+				$('#uxName').attr('readonly','readonly');	
 			});	
 
 			$('#uxLeaveRoom').click(function(){
 				socket.disconnect();
+				$('#uxEnterRoom').removeAttr('disabled');
+				$('#uxLeaveRoom').attr('disabled','disabled');	
+				$('#uxName').removeAttr('readonly');	
 			});
+
+			$('.selection-card').click(function(){
+				$('.selection-card').removeClass('selected');
+				$(this).addClass('selected');
+				$('#uxSubmit').removeAttr('disabled');
+
+				selectedCard = $(this).text();
+				console.log(selectedCard);
+			});		
+			$('#uxLeaveRoom').attr('disabled','disabled');
+			$('#uxSubmit').attr('disabled','disabled');			
 		});
 	</script>
 </head>
 <body>	
 <div class="container titleText">Scrum Poker</div>
 <div class="container">
-	<div class="row playerRow">
-		<div class="col-sm-12">
-			Name: <input type="text" name="uxName" id="uxName">
+	<div class="row">
+		<div class="col-sm-12 text-center join-holder">
+			<input type="text" name="uxName" id="uxName" placeholder="Name...">
 			<input type="button" value="Enter" class="button" id="uxEnterRoom">
 			<input type="button" value="Leave" class="button" id="uxLeaveRoom">
 		</div>		
+	</div>
+	<div class="row ">
+		<div class="col-xs-3">
+			<div class="selection-card">0</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="selection-card">0.5</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="selection-card">1</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="selection-card">2</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="selection-card">4</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="selection-card">5</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="selection-card">8</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="selection-card">13</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="selection-card">20</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="selection-card">40</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="selection-card">100</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="selection-card">&infin;</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="selection-card">?</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="selection-card">5</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<input type="button" value="Submit" class="submit-button" id="uxSubmit">
+		</div>
 	</div>
 </div>
 </body>
